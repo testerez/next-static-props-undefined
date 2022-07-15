@@ -11,14 +11,15 @@ export default function Home(props: any) {
       <NextLink href={router.asPath} locale={targetLocale} passHref>
         <a>Switch to {targetLocale}</a>
       </NextLink>
-      <pre>{JSON.stringify(props, null, 2)}</pre>
+      <pre>props: {JSON.stringify(props, null, 2)}</pre>
     </div>
   )
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const props = {
-    serverLocale: locale || "none",
+    serverLocale: locale,
+    foo: "bar",
   }
   return { props, revalidate: 30 }
 }
